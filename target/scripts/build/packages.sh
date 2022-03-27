@@ -201,6 +201,14 @@ function _install_fail2ban
   sedfile -i -r 's/^_nft_add_set = .+/_nft_add_set = <nftables> add set <table_family> <table> <addr_set> \\{ type <addr_type>\\; flags interval\\; \\}/' /etc/fail2ban/action.d/nftables.conf
 }
 
+function _install_getmail
+{
+  _log 'debug' 'Installing getmail6'
+  apt-get "${QUIET}" --no-install-recommends install python3-pip
+  pip3 install 'getmail6~=6.18.0'
+  ln -s /usr/local/bin/getmail /usr/bin/getmail
+}
+
 function _remove_data_after_package_installations
 {
   _log 'debug' 'Deleting sensitive files (secrets)'
@@ -225,5 +233,6 @@ _install_packages
 _install_dovecot
 _install_rspamd
 _install_fail2ban
+_install_getmail
 _remove_data_after_package_installations
 _post_installation_steps

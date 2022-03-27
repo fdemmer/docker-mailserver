@@ -547,6 +547,19 @@ Note: activate this only if you are confident in your bayes database for identif
 
 Note: The defaults of your fetchmailrc file need to be at the top of the file. Otherwise it won't be added correctly to all separate `fetchmail` instances.
 
+#### Getmail
+
+Note: Fetchmail and Getmail are mutually exclusive
+
+##### ENABLE_GETMAIL
+
+- **0** => `getmail` disabled
+- 1 => `getmail` enabled
+
+##### GETMAIL_POLL
+
+- **5** => `getmail` The number of minutes for the interval (min: 1, max: 30)
+
 #### LDAP
 
 ##### ENABLE_LDAP
